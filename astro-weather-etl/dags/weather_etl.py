@@ -25,11 +25,11 @@ def weather_etl():
     @task
     def load(data):
         conn = psycopg2.connect(
-            dbname="weather_db",
-            user="airflow",
-            password="airflow",
-            host="data-postgres",
-            port=5432
+            dbname="postgres",
+            user="postgres",
+            password="postgres",
+            host="postgres",  # This is the internal Docker name for Astro’s default Postgres
+            port="5432"
         )
         cur = conn.cursor()
         cur.execute("""
